@@ -6,6 +6,3 @@ main.o : main.cpp DicPalabras.h
 
 DicPalabras.o : DicPalabras.cpp DicPalabras.h
 	g++ -c DicPalabras.cpp
-
-
-

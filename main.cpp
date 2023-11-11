@@ -40,67 +40,67 @@ string normalizar(string &cadena)
   {
     switch (cadena[i])
     {
-      case (char)0xC3:
-        switch (cadena[i + 1])
-        {
-          case (char)0xA1: // á
-            aux += 'A';
-            ++i;
-            break;
-          case (char)0xA9: // é
-            aux += 'E';
-            ++i;
-            break;
-          case (char)0xAD: // í
-            aux += 'I';
-            ++i;
-            break;
-          case (char)0xB3: // ó
-            aux += 'O';
-            ++i;
-            break;
-          case (char)0xBA: // ú
-            aux += 'U';
-            ++i;
-            break;
-          case (char)0x81: // Á
-            aux += 'A';
-            ++i;
-            break;
-          case (char)0x89: // É
-            aux += 'E';
-            ++i;
-            break;
-          case (char)0x8D: // Í
-            aux += 'I';
-            ++i;
-            break;
-          case (char)0x93: // Ó
-            aux += 'O';
-            ++i;
-            break;
-          case (char)0x9A: // Ú
-            aux += 'U';
-            ++i;
-            break;
-          case (char)0xB1:       // ñ
-            aux += (char)0xC3; // Ñ es representada con 2 bytes ⇾ C3 91
-            aux += (char)0x91;
-            ++i;
-            break;
-          case (char)0xBC:       // ü
-            aux += (char)0xC3; // Ü es representada con 2 bytes ⇾ C3 9C
-            aux += (char)0x9C;
-            ++i;
-            break;
-          default:
-            aux += (char)0xC3;
-            break;
-        }
+    case (char)0xC3:
+      switch (cadena[i + 1])
+      {
+      case (char)0xA1: // á
+        aux += 'A';
+        ++i;
+        break;
+      case (char)0xA9: // é
+        aux += 'E';
+        ++i;
+        break;
+      case (char)0xAD: // í
+        aux += 'I';
+        ++i;
+        break;
+      case (char)0xB3: // ó
+        aux += 'O';
+        ++i;
+        break;
+      case (char)0xBA: // ú
+        aux += 'U';
+        ++i;
+        break;
+      case (char)0x81: // Á
+        aux += 'A';
+        ++i;
+        break;
+      case (char)0x89: // É
+        aux += 'E';
+        ++i;
+        break;
+      case (char)0x8D: // Í
+        aux += 'I';
+        ++i;
+        break;
+      case (char)0x93: // Ó
+        aux += 'O';
+        ++i;
+        break;
+      case (char)0x9A: // Ú
+        aux += 'U';
+        ++i;
+        break;
+      case (char)0xB1:     // ñ
+        aux += (char)0xC3; // Ñ es representada con 2 bytes ⇾ C3 91
+        aux += (char)0x91;
+        ++i;
+        break;
+      case (char)0xBC:     // ü
+        aux += (char)0xC3; // Ü es representada con 2 bytes ⇾ C3 9C
+        aux += (char)0x9C;
+        ++i;
         break;
       default:
-        aux += (char)toupper(cadena[i]);
+        aux += (char)0xC3;
         break;
+      }
+      break;
+    default:
+      aux += (char)toupper(cadena[i]);
+      break;
     }
   }
   return aux;
@@ -115,8 +115,8 @@ void INSERTAR()
     if (palabra == "</insertar>")
     {
       cout << "Insertando: " << contadorLocal << " palabras" << endl
-        << "Total diccionario: " << diccionario.numElem()
-        << " palabras" << endl;
+           << "Total diccionario: " << diccionario.numElem()
+           << " palabras" << endl;
       ;
       return;
     }
@@ -143,7 +143,7 @@ void BUSCAR()
 {
   string palabra;
   cin >> palabra;
-  if(diccionario.consultar(normalizar(palabra)))
+  if (diccionario.consultar(normalizar(palabra)))
     cout << "Buscando: " << normalizar(palabra) << " -> Encontrada" << endl;
   else
     cout << "Buscando: " << normalizar(palabra) << " -> No encontrada" << endl;
@@ -237,42 +237,42 @@ void interprete(string &comando)
 {
   switch (evaluarComando(comando))
   {
-    case 1:
-      INSERTAR();
-      break;
-    case 2:
-      VACIAR();
-      break;
-    case 3:
-      BUSCAR();
-      break;
-    case 4:
-      EXIT();
-      break;
-    case 5:
-      PARTIDAS();
-      break;
-    case 6:
-      ALOCADO();
-      break;
-    case 7:
-      CESAR();
-      break;
-    case 8:
-      JUANAGRA();
-      break;
-    case 9:
-      SACO();
-      break;
-    case 10:
-      CONSOME();
-      break;
-    case 11:
-      ALARGA();
-      break;
-    default:
-      cout << "No contemplado" << endl;
-      break;
+  case 1:
+    INSERTAR();
+    break;
+  case 2:
+    VACIAR();
+    break;
+  case 3:
+    BUSCAR();
+    break;
+  case 4:
+    EXIT();
+    break;
+  case 5:
+    PARTIDAS();
+    break;
+  case 6:
+    ALOCADO();
+    break;
+  case 7:
+    CESAR();
+    break;
+  case 8:
+    JUANAGRA();
+    break;
+  case 9:
+    SACO();
+    break;
+  case 10:
+    CONSOME();
+    break;
+  case 11:
+    ALARGA();
+    break;
+  default:
+    cout << "No contemplado" << endl;
+    break;
   }
 }
 

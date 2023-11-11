@@ -6,7 +6,8 @@
 #include <iostream>
 using namespace std;
 
-class DicPalabras {
+class DicPalabras
+{
 private:
   list<string> lista;
   int contador;
@@ -16,7 +17,8 @@ public:
   void vaciar();
   void insertar(string palabra);
   bool consultar(string palabra);
-  int numElem() {
+  int numElem()
+  {
     return contador;
   }
 };
