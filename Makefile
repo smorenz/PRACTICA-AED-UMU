@@ -1,6 +1,6 @@
-CXX	:=	g++
-SRC	:=	src
-OBJ	:=	obj
+CXX := g++
+SRC := src
+OBJ := obj
 CPPFLAGS := -std=c++17 -Wall -Wno-deprecated -O2
 OBJS := $(addprefix ./obj/, DicPalabrasLista.o main.o)
 
