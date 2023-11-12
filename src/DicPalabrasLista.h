@@ -1,19 +1,19 @@
-#ifndef _DIC_PALABRAS
-#define _DIC_PALABRAS
+#ifndef _DIC_PALABRAS_LISTA
+#define _DIC_PALABRAS_LISTA
 
 #include <list>
 #include <string>
 #include <iostream>
 using namespace std;
 
-class DicPalabras
+class DicPalabrasLista
 {
 private:
   list<string> lista;
   int contador;
 
 public:
-  DicPalabras();
+  DicPalabrasLista();
   void vaciar();
   void insertar(string palabra);
   bool consultar(string palabra);
@@ -23,4 +23,4 @@ public:
   }
 };
 
-#endif // ! _DIC_PALABRAS
+#endif // ! _DIC_PALABRAS_LISTA

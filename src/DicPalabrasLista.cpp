@@ -1,18 +1,18 @@
-#include "DicPalabras.h"
+#include "DicPalabrasLista.h"
 using namespace std;
 
-DicPalabras::DicPalabras()
+DicPalabrasLista::DicPalabrasLista()
 {
   contador = 0;
 }
 
-void DicPalabras::vaciar()
+void DicPalabrasLista::vaciar()
 {
   contador = 0;
   lista.clear();
 }
 
-void DicPalabras::insertar(string palabra)
+void DicPalabrasLista::insertar(string palabra)
 {
   list<string>::iterator iterador;
   iterador = lista.begin();
@@ -27,7 +27,7 @@ void DicPalabras::insertar(string palabra)
   lista.insert(iterador, palabra);
 }
 
-bool DicPalabras::consultar(string palabra)
+bool DicPalabrasLista::consultar(string palabra)
 {
   list<string>::iterator iterador;
   iterador = lista.begin();

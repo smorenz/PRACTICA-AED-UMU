@@ -1,11 +1,10 @@
 #include <iostream>
-#include "DicPalabras.h"
+#include "DicPalabrasLista.h"
 using namespace std;
 
-// Comentario test - borrar -
 // Contador global para la cantidad de palabras en el diccionario.
 int contador = 0;
-DicPalabras diccionario;
+DicPalabrasLista diccionario;
 
 int evaluarComando(string &comando)
 {
