@@ -8,6 +8,7 @@ a.out : $(OBJS)
 	$(CXX) $^ -o ./a.out $(CPPFLAGS)
 
 ./obj/%.o : ./src/%.cpp
+	test -d ./obj  || mkdir ./obj
 	$(CXX) -c $< -o $@ $(CPPFLAGS)
 	
 clear :
