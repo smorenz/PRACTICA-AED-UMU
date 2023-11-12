@@ -2,19 +2,15 @@ CXX	:=	g++
 SRC	:=	src
 OBJ	:=	obj
 CPPFLAGS := -std=c++17 -Wall -Wno-deprecated -O2
-
+OBJS := $(addprefix obj/,DicPalabras.o main.o)
 VPATH := ./src ./obj
 
 all : a.out
 
-a.out : main.o DicPalabras.o
-	$(CXX) $(OBJ)/main.o $(OBJ)/DicPalabras.o $(CPPFLAGS)
+a.out : $(OBJS)
+	$(CXX) $? -o ./a.out $(CPPFLAGS)
 
-main.o : main.cpp DicPalabras.h
-	$(CXX) -c $(SRC)/main.cpp -o $(OBJ)/$@ $(CPPFLAGS)
-
-DicPalabras.o : DicPalabras.cpp DicPalabras.h
-	$(CXX) -c $(SRC)/DicPalabras.cpp -o $(OBJ)/$@ $(CPPFLAGS)
-
+%.o : %.cpp
+	$(CXX) -c $< -o ./obj/$@ $(CPPFLAGS)
 clean:
 	rm -f ./a.out $(OBJ)/*.o
