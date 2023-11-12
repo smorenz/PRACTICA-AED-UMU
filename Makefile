@@ -10,5 +10,5 @@ a.out : $(OBJS)
 ./obj/%.o : ./src/%.cpp
 	$(CXX) -c $< -o $@ $(CPPFLAGS)
 	
-clean:
+clear :
 	rm -f ./a.out $(OBJ)/*.o
