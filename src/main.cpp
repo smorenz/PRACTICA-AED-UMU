@@ -1,10 +1,10 @@
 #include <iostream>
-#include "DicPalabrasLista.h"
+#include "DicPalabras.h"
 using namespace std;
 
 // Contador global para la cantidad de palabras en el diccionario.
 int contador = 0;
-DicPalabrasLista diccionario;
+DicPalabras diccionario;
 
 int evaluarComando(string &comando)
 {
@@ -126,9 +126,6 @@ void INSERTAR()
   }
 }
 
-/**
- * Elimina todas las palabras del diccionario y muestra en pantalla la nueva cantidad de estas (0)
- */
 void VACIAR()
 {
   diccionario.vaciar();
@@ -136,9 +133,6 @@ void VACIAR()
   cout << "Total diccionario: " << diccionario.numElem() << " palabras" << endl;
 }
 
-/**
- * Indica si las palabras introducidas por el usuario se encuentran o no en el diccionario.
- */
 void BUSCAR()
 {
   string palabra;
@@ -149,9 +143,6 @@ void BUSCAR()
     cout << "Buscando: " << normalizar(palabra) << " -> No encontrada" << endl;
 }
 
-/**
- * Termina el programa, mostrando antes un breve indicativo en pantalla.
- */
 void EXIT()
 {
   cout << "Saliendo..." << endl;
