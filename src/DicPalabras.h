@@ -9,7 +9,7 @@ using namespace std;
 class DicPalabras
 {
 private:
-  list<string> lista;
+  TablaHash tabla;
   int contador;
 
 public:
