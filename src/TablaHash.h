@@ -3,8 +3,9 @@
 
 #include <iostream>
 #include <list>
+using namespace std;
 
-class TablaHash() {
+class TablaHash {
 private:
   list<int> entradas;
   int nElem;
