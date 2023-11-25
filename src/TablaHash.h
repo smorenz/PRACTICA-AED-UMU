@@ -10,7 +10,7 @@ private:
   list<int> entradas;
   int nElem;
 public:
-  TablaHash();
+  TablaHash(int entradas);
   ~TablaHash();
   void insertar(string palabra);
   void vaciar(void);

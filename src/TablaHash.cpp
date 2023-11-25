@@ -3,4 +3,5 @@ using namespace std;
 
 TablaHash::TablaHash(int entradas) {
   nElem = entradas;
+  list<int>
 }
