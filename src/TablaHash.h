@@ -2,14 +2,14 @@
 #define _TABLA_HASH
 
 #include <iostream>
-#include <list>
 using namespace std;
 
 class TablaHash {
 private:
-  string *T;
   int B; // tamaño de la lista
   int nElem; // Elementos en lista
+  string *tabla;
+  int hash(string palabra);
 public:
   TablaHash(int entradas);
   ~TablaHash();
