@@ -7,8 +7,9 @@ using namespace std;
 
 class TablaHash {
 private:
-  list<int> entradas;
-  int nElem;
+  string *T;
+  int B; // tamaño de la lista
+  int nElem; // Elementos en lista
 public:
   TablaHash(int entradas);
   ~TablaHash();
