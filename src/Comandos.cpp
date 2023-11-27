@@ -119,7 +119,6 @@ void INSERTAR()
       return;
     }
     diccionario.insertar(normalizar(palabra));
-    contador++;
     contadorLocal++;
   }
 }
