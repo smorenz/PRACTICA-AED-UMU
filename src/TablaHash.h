@@ -1,7 +1,8 @@
-#ifndef _TABLA_HASH
-#define _TABLA_HASH
+#ifndef TABLA_HASH
+#define TABLA_HASH
 
 #include <iostream>
+
 using namespace std;
 
 class TablaHash {
@@ -9,14 +10,21 @@ private:
   int B; // tamaño de la lista
   int nElem; // Elementos en lista
   string *tabla;
+  int buscar(string palabra);
   int hash(string palabra);
 public:
-  TablaHash(int entradas);
+  TablaHash(int elementos);
+  TablaHash();
+
   ~TablaHash();
+
   void insertar(string palabra);
+
   void vaciar(void);
-  bool consultar(string palabra); 
+
+  bool consultar(string palabra);
+
   int numElem(void) { return nElem; }
 };
 
-#endif // ! _TABLA_HASH
+#endif // TABLA_HASH

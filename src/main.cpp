@@ -2,8 +2,6 @@
 #include "DicPalabras.h"
 using namespace std;
 
-// Contador global para la cantidad de palabras en el diccionario.
-int contador = 0;
 DicPalabras diccionario;
 
 int evaluarComando(string &comando)
