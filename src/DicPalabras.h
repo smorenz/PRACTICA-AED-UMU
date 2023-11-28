@@ -1,26 +1,23 @@
-#ifndef _DIC_PALABRAS
-#define _DIC_PALABRAS
+#ifndef DIC_PALABRAS
+#define DIC_PALABRAS
 
-#include <list>
-#include <string>
-#include <iostream>
+#include "TablaHash.h"
+
 using namespace std;
 
-class DicPalabras
-{
+class DicPalabras {
 private:
-  list<string> lista;
-  int contador;
-
+    TablaHash tabla;
 public:
-  DicPalabras();
-  void vaciar();
-  void insertar(string palabra);
-  bool consultar(string palabra);
-  int numElem()
-  {
-    return contador;
-  }
+    DicPalabras(void);
+
+    void vaciar();
+
+    void insertar(string palabra);
+
+    bool consultar(string palabra);
+
+    int numElem();
 };
 
-#endif // ! _DIC_PALABRAS
+#endif // DIC_PALABRAS

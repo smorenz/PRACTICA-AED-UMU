@@ -1,39 +1,24 @@
 #include "DicPalabras.h"
+#include "TablaHash.h"
+
 using namespace std;
 
-DicPalabras::DicPalabras()
-{
-  contador = 0;
+DicPalabras::DicPalabras(void) {
+    tabla = TablaHash();
 }
 
-void DicPalabras::vaciar()
-{
-  contador = 0;
-  lista.clear();
+void DicPalabras::vaciar() {
+    tabla.vaciar();
 }
 
-void DicPalabras::insertar(string palabra)
-{
-  list<string>::iterator iterador;
-  iterador = lista.begin();
-
-  while (iterador != lista.end() && *iterador != palabra)
-    iterador++;
-
-  if (*iterador == palabra)
-    return;
-
-  contador++;
-  lista.insert(iterador, palabra);
+void DicPalabras::insertar(string palabra) {
+    tabla.insertar(palabra);
 }
 
-bool DicPalabras::consultar(string palabra)
-{
-  list<string>::iterator iterador;
-  iterador = lista.begin();
+bool DicPalabras::consultar(string palabra) {
+    return tabla.consultar(palabra);
+}
 
-  while (iterador != lista.end() && *iterador != palabra)
-    iterador++;
-
-  return iterador != lista.end();
+int DicPalabras::numElem() {
+    return tabla.numElem();
 }
