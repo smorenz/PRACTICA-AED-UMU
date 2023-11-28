@@ -4,20 +4,21 @@
 using namespace std;
 
 DicPalabras::DicPalabras(void) {
-  tabla = TablaHash();
-  contador = 0;
+    tabla = TablaHash();
 }
 
 void DicPalabras::vaciar() {
-  tabla.vaciar();
-  contador = 0;
+    tabla.vaciar();
 }
 
 void DicPalabras::insertar(string palabra) {
-  tabla.insertar(palabra);
-  contador++;
+    tabla.insertar(palabra);
 }
 
 bool DicPalabras::consultar(string palabra) {
-  return tabla.consultar(palabra);
+    return tabla.consultar(palabra);
+}
+
+int DicPalabras::numElem() {
+    return tabla.numElem();
 }

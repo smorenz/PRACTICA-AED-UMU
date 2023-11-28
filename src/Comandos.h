@@ -1,5 +1,5 @@
-#ifndef _COMANDOS
-#define _COMANDOS
+#ifndef COMANDOS
+#define COMANDOS
 
 #include "DicPalabras.h"
 using namespace std;
@@ -19,7 +19,7 @@ void EXIT();
 void PARTIDAS();
 void ALOCADO();
 void CESAR();
-void JUANAGRAMA();
+void JUANAGRA();
 void SACO();
 void CONSOME();
 void ALARGA();

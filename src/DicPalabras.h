@@ -8,7 +8,6 @@ using namespace std;
 class DicPalabras {
 private:
     TablaHash tabla;
-    int contador;
 public:
     DicPalabras(void);
 
@@ -18,7 +17,7 @@ public:
 
     bool consultar(string palabra);
 
-    int numElem() { return contador; }
+    int numElem();
 };
 
 #endif // DIC_PALABRAS
