@@ -4,6 +4,8 @@ OBJ := obj
 CPPFLAGS := -std=c++17 -Wall -Wno-deprecated -O2
 OBJS := $(addprefix ./obj/, DicPalabras.o main.o)
 
+all : ./a.out
+
 a.out : $(OBJS)
 	$(CXX) $^ -o ./a.out $(CPPFLAGS)
 

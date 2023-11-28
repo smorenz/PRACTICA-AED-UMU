@@ -115,7 +115,6 @@ void INSERTAR()
       cout << "Insertando: " << contadorLocal << " palabras" << endl
         << "Total diccionario: " << diccionario.numElem()
         << " palabras" << endl;
-      ;
       return;
     }
     diccionario.insertar(normalizar(palabra));
