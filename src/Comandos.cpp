@@ -1,5 +1,5 @@
-#include "Comandos.h"
-#include "DicPalabras.h"
+#include "Comandos.hpp"
+#include "DicPalabras.hpp"
 
 using namespace std;
 
@@ -239,4 +239,3 @@ void interprete(string &comando) {
             break;
     }
 }
-

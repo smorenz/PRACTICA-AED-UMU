@@ -1,5 +1,5 @@
-#include "DicPalabras.h"
-#include "TablaHash.h"
+#include "DicPalabras.hpp"
+#include "TablaHash.hpp"
 
 using namespace std;
 
