@@ -1,4 +1,7 @@
 .DS_Store
+./src/DS_Store
+./obj/DS_Store
+./obj/tests/DS_Store
 .idea
 ./src/tests
 ./src/tests/*
