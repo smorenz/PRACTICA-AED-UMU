@@ -1,4 +1,5 @@
 #include "TablaHash.h"
+#include <string>
 
 #define TAM_TABLA_DEF 5000
 
@@ -60,11 +61,10 @@ void TablaHash::insertar(string palabra) {
             if (!tabla[i].empty()) {
                 int h = buscar(tabla[i]);
                 // ¿Tiene sentido la comprobación?
-                if (h != -1)
+                if (h != -1 && h < B)
                     tablaAux[h] = tabla[i];
             }
         }
-        delete[] tabla;
         tabla = tablaAux;
     }
 }
