@@ -5,25 +5,26 @@
 using namespace std;
 
 // Función de dispersión
-int TablaHash::hash(string palabra) {
+int TablaHash::hash(string &palabra, int indice) {
     unsigned int h = 0;
-    for (int i = 0; i < palabra.length(); i++)
-        h = (h * 256 + palabra[i]) % B;
+    int i = (int)exp2(indice) % B - 1;
 
-    return h;
+    for (char car : palabra)
+        h = (h * 256 + car) % B;
+
+    return (int)((h + i) % B);
 }
 
 int TablaHash::buscar(string palabra) {
     int i = 1;
-    int h = hash(palabra);
-    while (i < B && !tabla[(h + i) % B].empty() && tabla[(h + i) % B] != palabra)
-        i = (i * i) % B;
+    int h = hash(palabra, i);
 
-    // Caso tabla llena
-    if (i == B || !tabla[(h + i) % B].empty())
-        return -1;
+    while (i < B && !tabla[(h + i) % B].empty() && tabla[(h + i) % B] != palabra) {
+        h = hash(palabra, i);
+        i++;
+    }
 
-    return (h + i) % B;
+    return h;
 }
 
 TablaHash::TablaHash(int entradas) {
@@ -45,7 +46,7 @@ TablaHash::~TablaHash() {
 void TablaHash::insertar(string palabra) {
     int h = buscar(palabra);
 
-    if (h != -1) {
+    if (tabla[h].empty()) {
         tabla[h] = palabra;
         nElem++;
     }
