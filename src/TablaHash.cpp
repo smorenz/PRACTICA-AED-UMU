@@ -1,4 +1,5 @@
 #include "TablaHash.h"
+#include <cmath>
 #include <string>
 
 #define TAM_TABLA_DEF 5000
