@@ -13,7 +13,7 @@ private:
 
     int buscar(string palabra);
 
-    int hash(string palabra, int indice);
+    int hash(string &palabra, int indice);
 
 public:
     TablaHash(int elementos);
