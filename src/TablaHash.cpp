@@ -1,10 +1,10 @@
 #include "TablaHash.h"
 
-#define TAM_TABLA_DEF 100
+#define TAM_TABLA_DEF 5000
 
 using namespace std;
 
-// Función de dispersión test TODO - implementar nueva
+// Función de dispersión
 int TablaHash::hash(string palabra) {
     unsigned int h = 0;
     for (int i = 0; i < palabra.length(); i++)
@@ -16,9 +16,8 @@ int TablaHash::hash(string palabra) {
 int TablaHash::buscar(string palabra) {
     int i = 1;
     int h = hash(palabra);
-
     while (i < B && !tabla[(h + i) % B].empty() && tabla[(h + i) % B] != palabra)
-        i++;
+        i = (i * i) % B;
 
     // Caso tabla llena
     if (i == B || !tabla[(h + i) % B].empty())
