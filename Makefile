@@ -3,6 +3,8 @@ SRC := src
 OBJ := obj
 CPPFLAGS := -std=c++17 -Wall -Wno-deprecated -O2
 OBJS := $(addprefix ./obj/, DicPalabras.o main.o Comandos.o TablaHash.o)
+TESTFILE := $(addprefix ./obj/tests/, 004a.in)
+DIFFILE := $(addprefix ./obj/tests/, 004a.out)
 
 all : ./a.out
 
@@ -15,3 +17,9 @@ a.out : $(OBJS)
 	
 clear :
 	rm -f ./a.out $(OBJ)/*.o ./salida
+
+test : a.out $(TESTFILE)
+	./a.out < $(TESTFILE) > salida
+
+diff : salida $(DIFFILE)
+	diff salida $(DIFFILE)

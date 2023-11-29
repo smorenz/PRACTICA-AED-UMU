@@ -59,12 +59,13 @@ void TablaHash::insertar(string palabra) {
         string *tablaAux = new string[B];
         for (int i = 0; i < antiguoB; i++) {
             if (!tabla[i].empty()) {
-                int h = buscar(tabla[i]);
-                // ¿Tiene sentido la comprobación?
-                if (h != -1 && h < B)
+          int h = buscar(tabla[i]);
+              // ¿Tiene sentido la comprobación?
+          if (h != -1 && h < B)
                     tablaAux[h] = tabla[i];
             }
         }
+        delete[] tabla;
         tabla = tablaAux;
     }
 }
