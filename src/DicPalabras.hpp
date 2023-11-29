@@ -1,7 +1,7 @@
-#ifndef DIC_PALABRAS
-#define DIC_PALABRAS
+#ifndef DIC_PALABRAS_HPP
+#define DIC_PALABRAS_HPP
 
-#include "TablaHash.h"
+#include "TablaHash.hpp"
 
 using namespace std;
 

@@ -1,7 +1,7 @@
-#ifndef COMANDOS
-#define COMANDOS
+#ifndef COMANDOS_HPP
+#define COMANDOS_HPP
 
-#include "DicPalabras.h"
+#include "DicPalabras.hpp"
 using namespace std;
 
 // Intérprete de comandos
@@ -24,4 +24,4 @@ void SACO();
 void CONSOME();
 void ALARGA();
 
-#endif // !_COMANDOS
+#endif // COMANDOS

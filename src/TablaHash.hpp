@@ -1,5 +1,5 @@
-#ifndef TABLA_HASH
-#define TABLA_HASH
+#ifndef TABLA_HASH_HPP
+#define TABLA_HASH_HPP
 
 #include <iostream>
 
