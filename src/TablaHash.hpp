@@ -1,6 +1,8 @@
 #ifndef TABLA_HASH_HPP
 #define TABLA_HASH_HPP
 
+#define TAM_TABLA_DEF 5000
+
 #include <iostream>
 
 using namespace std;
@@ -17,8 +19,7 @@ private:
     int hash(string &palabra, int indice);
 
 public:
-    TablaHash(int elementos);
-    TablaHash();
+    TablaHash(int elementos = TAM_TABLA_DEF);
     ~TablaHash();
     void insertar(string palabra);
     void vaciar(void);

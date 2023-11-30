@@ -1,8 +1,6 @@
 #include "TablaHash.hpp"
 #include <cmath>
 
-#define TAM_TABLA_DEF 5000
-
 using namespace std;
 
 // Función de dispersión
@@ -38,13 +36,6 @@ TablaHash::TablaHash(int entradas)
     B = entradas;
     nElem = 0;
     tabla = new string[B];
-}
-
-TablaHash::TablaHash()
-{
-    B = TAM_TABLA_DEF;
-    nElem = 0;
-    tabla = new string[TAM_TABLA_DEF];
 }
 
 TablaHash::~TablaHash()
