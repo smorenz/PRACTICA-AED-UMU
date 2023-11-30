@@ -1,5 +1,6 @@
 #include "TablaHash.hpp"
 #include <cmath>
+#include <assert.h>
 
 using namespace std;
 
@@ -14,7 +15,11 @@ int TablaHash::hash(string &palabra, int indice)
         h = (h * 256 + car) % B;
     }
 
-    return (int)((h + i) % B);
+    int resultado = (h + i) % B;
+
+    assert(resultado >= 0 && resultado < B);
+
+    return resultado;
 }
 
 int TablaHash::buscar(string palabra)
@@ -22,11 +27,15 @@ int TablaHash::buscar(string palabra)
     int i = 1;
     int h = hash(palabra, i);
 
-    while (i < B && !tabla[(h + i) % B].empty() && tabla[(h + i) % B] != palabra)
+    assert ((h + i) % B >= 0 && (h + i) % B < B);
+    while (i < B && !tabla[h].empty() && tabla[h] != palabra)
     {
         h = hash(palabra, i);
         i++;
+        assert((h + i) % B >= 0 && (h + i) % B < B);
     }
+
+    assert(h < B);
 
     return h;
 }
