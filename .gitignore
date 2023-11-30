@@ -6,3 +6,5 @@
 ./src/tests
 ./src/tests/*
 ./obj/*
+./obj/DicPalabras.o
+./obj
