@@ -10,8 +10,9 @@ int TablaHash::hash(string &palabra, int indice) {
     unsigned int h = 0;
     int i = (int)exp2(indice) % B - 1;
 
-    for (char car : palabra)
+    for (char car : palabra) {
         h = (h * 256 + car) % B;
+    }  
 
     return (int)((h + i) % B);
 }
@@ -59,9 +60,9 @@ void TablaHash::insertar(string palabra) {
         string *tablaAux = new string[B];
         for (int i = 0; i < antiguoB; i++) {
             if (!tabla[i].empty()) {
-          int h = buscar(tabla[i]);
-              // ¿Tiene sentido la comprobación?
-          if (h != -1 && h < B)
+                int h = buscar(tabla[i]);
+                // ¿Tiene sentido la comprobación?
+                if (h != -1 && h < B)
                     tablaAux[h] = tabla[i];
             }
         }

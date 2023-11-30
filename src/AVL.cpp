@@ -1,6 +1,13 @@
 #include "AVL.hpp"
 
 AVL::Nodo::Nodo(string clave) {
-    clave = clave;
-    altura = 1;
+    this->clave = clave;
+    izq = NULL;
+    der = NULL;
+    altura = 0;
+}
+
+AVL::Nodo::~Nodo() {
+    delete izq;
+    delete der;
 }

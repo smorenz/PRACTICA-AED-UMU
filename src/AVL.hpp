@@ -25,6 +25,10 @@ public:
     int nElem() { return numElem; }
     bool consultar(string palabra);
     void vaciar();
+    void RSD(Nodo *objetivo);
+    void RSI(Nodo *objetivo);
+    void RDD(Nodo *objetivo) { RSI(objetivo->der); RSD(objetivo); };
+    void RDI(Nodo *objetivo) { RSD(objetivo->izq); RSI(objetivo); };
 };
 
 #endif // _AVL_HPP
