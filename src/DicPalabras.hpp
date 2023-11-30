@@ -9,16 +9,11 @@ class DicPalabras
 {
 private:
     TablaHash tabla;
-
 public:
     DicPalabras(void);
-
     void vaciar();
-
     void insertar(string palabra);
-
     bool consultar(string palabra);
-
     int numElem();
 };
 
