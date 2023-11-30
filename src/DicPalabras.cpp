@@ -3,10 +3,6 @@
 
 using namespace std;
 
-DicPalabras::DicPalabras(void)
-{
-    tabla = TablaHash();
-}
 
 void DicPalabras::vaciar()
 {

@@ -27,12 +27,12 @@ int TablaHash::buscar(string palabra)
     int i = 1;
     int h = hash(palabra, i);
 
-    assert ((h + i) % B >= 0 && (h + i) % B < B);
+    assert (h >= 0 && h< B);
     while (i < B && !tabla[h].empty() && tabla[h] != palabra)
     {
         h = hash(palabra, i);
         i++;
-        assert((h + i) % B >= 0 && (h + i) % B < B);
+        assert(h >= 0 && h < B);
     }
 
     assert(h < B);
