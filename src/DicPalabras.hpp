@@ -5,9 +5,11 @@
 
 using namespace std;
 
-class DicPalabras {
+class DicPalabras
+{
 private:
     TablaHash tabla;
+
 public:
     DicPalabras(void);
 

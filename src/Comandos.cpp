@@ -5,7 +5,8 @@ using namespace std;
 
 DicPalabras diccionario;
 
-int evaluarComando(string &comando) {
+int evaluarComando(string &comando)
+{
     if (comando == "<insertar>")
         return 1;
     if (comando == "<vaciar>")
@@ -31,80 +32,87 @@ int evaluarComando(string &comando) {
     return -1;
 }
 
-string normalizar(string &cadena) {
+string normalizar(string &cadena)
+{
     string aux;
-    for (unsigned int i = 0; i < cadena.length(); i++) {
-        switch (cadena[i]) {
-            case (char) 0xC3:
-                switch (cadena[i + 1]) {
-                    case (char) 0xA1: // á
-                        aux += 'A';
-                        ++i;
-                        break;
-                    case (char) 0xA9: // é
-                        aux += 'E';
-                        ++i;
-                        break;
-                    case (char) 0xAD: // í
-                        aux += 'I';
-                        ++i;
-                        break;
-                    case (char) 0xB3: // ó
-                        aux += 'O';
-                        ++i;
-                        break;
-                    case (char) 0xBA: // ú
-                        aux += 'U';
-                        ++i;
-                        break;
-                    case (char) 0x81: // Á
-                        aux += 'A';
-                        ++i;
-                        break;
-                    case (char) 0x89: // É
-                        aux += 'E';
-                        ++i;
-                        break;
-                    case (char) 0x8D: // Í
-                        aux += 'I';
-                        ++i;
-                        break;
-                    case (char) 0x93: // Ó
-                        aux += 'O';
-                        ++i;
-                        break;
-                    case (char) 0x9A: // Ú
-                        aux += 'U';
-                        ++i;
-                        break;
-                    case (char) 0xB1:     // ñ
-                        aux += (char) 0xC3; // Ñ es representada con 2 bytes ⇾ C3 91
-                        aux += (char) 0x91;
-                        ++i;
-                        break;
-                    case (char) 0xBC:     // ü
-                        aux += (char) 0xC3; // Ü es representada con 2 bytes ⇾ C3 9C
-                        aux += (char) 0x9C;
-                        ++i;
-                        break;
-                    default:
-                        aux += (char) 0xC3;
-                        break;
-                }
+    for (unsigned int i = 0; i < cadena.length(); i++)
+    {
+        switch (cadena[i])
+        {
+        case (char)0xC3:
+            switch (cadena[i + 1])
+            {
+            case (char)0xA1: // á
+                aux += 'A';
+                ++i;
+                break;
+            case (char)0xA9: // é
+                aux += 'E';
+                ++i;
+                break;
+            case (char)0xAD: // í
+                aux += 'I';
+                ++i;
+                break;
+            case (char)0xB3: // ó
+                aux += 'O';
+                ++i;
+                break;
+            case (char)0xBA: // ú
+                aux += 'U';
+                ++i;
+                break;
+            case (char)0x81: // Á
+                aux += 'A';
+                ++i;
+                break;
+            case (char)0x89: // É
+                aux += 'E';
+                ++i;
+                break;
+            case (char)0x8D: // Í
+                aux += 'I';
+                ++i;
+                break;
+            case (char)0x93: // Ó
+                aux += 'O';
+                ++i;
+                break;
+            case (char)0x9A: // Ú
+                aux += 'U';
+                ++i;
+                break;
+            case (char)0xB1:       // ñ
+                aux += (char)0xC3; // Ñ es representada con 2 bytes ⇾ C3 91
+                aux += (char)0x91;
+                ++i;
+                break;
+            case (char)0xBC:       // ü
+                aux += (char)0xC3; // Ü es representada con 2 bytes ⇾ C3 9C
+                aux += (char)0x9C;
+                ++i;
                 break;
             default:
-                aux += (char) toupper(cadena[i]);
+                aux += (char)0xC3;
                 break;
+            }
+            break;
+        default:
+            aux += (char)toupper(cadena[i]);
+            break;
         }
     }
     return aux;
 }
 
-void INSERTAR() {
+void INSERTAR()
+{
     string palabra;
     int contadorLocal = 0;
-    while (cin >> palabra) {
-        if (palabra == "</insertar>") {
+    while (cin >> palabra)
+    {
+        if (palabra == "</insertar>")
+        {
             cout << "Insertando: " << contadorLocal << " palabras" << endl
                  << "Total diccionario: " << diccionario.numElem()
                  << " palabras" << endl;
@@ -115,13 +123,15 @@ void INSERTAR() {
     }
 }
 
-void VACIAR() {
+void VACIAR()
+{
     diccionario.vaciar();
     cout << "Vaciando" << endl;
     cout << "Total diccionario: " << diccionario.numElem() << " palabras" << endl;
 }
 
-void BUSCAR() {
+void BUSCAR()
+{
     string palabra;
     cin >> palabra;
     if (diccionario.consultar(normalizar(palabra)))
@@ -130,16 +140,20 @@ void BUSCAR() {
         cout << "Buscando: " << normalizar(palabra) << " -> No encontrada" << endl;
 }
 
-void EXIT() {
+void EXIT()
+{
     cout << "Saliendo..." << endl;
     exit(0);
 }
 
-void PARTIDAS() {
+void PARTIDAS()
+{
     string palabra;
     string temp;
-    while (cin >> palabra) {
-        if (palabra == "</partidas>") {
+    while (cin >> palabra)
+    {
+        if (palabra == "</partidas>")
+        {
             cout << "Partidas:" << temp << endl;
             cout << "No implementado" << endl;
             return;
@@ -150,7 +164,8 @@ void PARTIDAS() {
     }
 }
 
-void ALOCADO() {
+void ALOCADO()
+{
     string palabra;
     cin >> palabra;
     palabra = normalizar(palabra);
@@ -158,7 +173,8 @@ void ALOCADO() {
     cout << "No implementado" << endl;
 }
 
-void CESAR() {
+void CESAR()
+{
     string palabra;
     cin >> palabra;
     palabra = normalizar(palabra);
@@ -166,7 +182,8 @@ void CESAR() {
     cout << "No implementado" << endl;
 }
 
-void JUANAGRA() {
+void JUANAGRA()
+{
     string palabra;
     cin >> palabra;
     palabra = normalizar(palabra);
@@ -174,7 +191,8 @@ void JUANAGRA() {
     cout << "No implementado" << endl;
 }
 
-void SACO() {
+void SACO()
+{
     string palabra1, palabra2;
     cin >> palabra1 >> palabra2;
     palabra1 = normalizar(palabra1);
@@ -183,7 +201,8 @@ void SACO() {
     cout << "No implementado" << endl;
 }
 
-void CONSOME() {
+void CONSOME()
+{
     string palabra;
     cin >> palabra;
     palabra = normalizar(palabra);
@@ -191,7 +210,8 @@ void CONSOME() {
     cout << "No implementado" << endl;
 }
 
-void ALARGA() {
+void ALARGA()
+{
     string palabra;
     cin >> palabra;
     palabra = normalizar(palabra);
@@ -199,43 +219,45 @@ void ALARGA() {
     cout << "No implementado" << endl;
 }
 
-void interprete(string &comando) {
-    switch (evaluarComando(comando)) {
-        case 1:
-            INSERTAR();
-            break;
-        case 2:
-            VACIAR();
-            break;
-        case 3:
-            BUSCAR();
-            break;
-        case 4:
-            EXIT();
-            break;
-        case 5:
-            PARTIDAS();
-            break;
-        case 6:
-            ALOCADO();
-            break;
-        case 7:
-            CESAR();
-            break;
-        case 8:
-            JUANAGRA();
-            break;
-        case 9:
-            SACO();
-            break;
-        case 10:
-            CONSOME();
-            break;
-        case 11:
-            ALARGA();
-            break;
-        default:
-            cout << "No contemplado" << endl;
-            break;
+void interprete(string &comando)
+{
+    switch (evaluarComando(comando))
+    {
+    case 1:
+        INSERTAR();
+        break;
+    case 2:
+        VACIAR();
+        break;
+    case 3:
+        BUSCAR();
+        break;
+    case 4:
+        EXIT();
+        break;
+    case 5:
+        PARTIDAS();
+        break;
+    case 6:
+        ALOCADO();
+        break;
+    case 7:
+        CESAR();
+        break;
+    case 8:
+        JUANAGRA();
+        break;
+    case 9:
+        SACO();
+        break;
+    case 10:
+        CONSOME();
+        break;
+    case 11:
+        ALARGA();
+        break;
+    default:
+        cout << "No contemplado" << endl;
+        break;
     }
 }

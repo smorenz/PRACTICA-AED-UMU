@@ -5,29 +5,24 @@
 
 using namespace std;
 
-class TablaHash {
+class TablaHash
+{
 private:
-    int B; // tamaño de la lista
+    //
+    int B;     // tamaño de la lista
     int nElem; // Elementos en lista
     string *tabla;
 
     int buscar(string palabra);
-
     int hash(string &palabra, int indice);
 
 public:
     TablaHash(int elementos);
-
     TablaHash();
-
     ~TablaHash();
-
     void insertar(string palabra);
-
     void vaciar(void);
-
     bool consultar(string palabra);
-
     int numElem(void) { return nElem; }
 };
 

@@ -5,10 +5,12 @@
 
 using namespace std;
 
-class AVL {
+class AVL
+{
 private:
     // Atributos
-    class Nodo {
+    class Nodo
+    {
     public:
         string clave;
         int altura;
@@ -23,8 +25,16 @@ private:
     // Funciones auxiliares
     void RSD(AVL *objetivo);
     void RSI(AVL *objetivo);
-    void RDD(AVL *objetivo) { RSI(objetivo->raiz->der); RSD(objetivo); };
-    void RDI(AVL *objetivo) { RSD(objetivo->raiz->izq); RSI(objetivo); };
+    void RDD(AVL *objetivo)
+    {
+        RSI(objetivo->raiz->der);
+        RSD(objetivo);
+    };
+    void RDI(AVL *objetivo)
+    {
+        RSD(objetivo->raiz->izq);
+        RSI(objetivo);
+    };
     int altura();
 
 public:
@@ -34,7 +44,6 @@ public:
     int nElem() { return numElem; }
     bool consultar(string palabra);
     void vaciar();
-
 };
 
 #endif // _AVL_HPP

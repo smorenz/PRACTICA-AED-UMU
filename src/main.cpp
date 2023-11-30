@@ -1,7 +1,8 @@
 #include "Comandos.hpp"
 using namespace std;
 
-int main() {
+int main()
+{
     string comando;
     while (cin >> comando)
         interprete(comando);
