@@ -1,6 +1,5 @@
 #include "TablaHash.hpp"
 #include <cmath>
-#include <assert.h>
 
 using namespace std;
 
