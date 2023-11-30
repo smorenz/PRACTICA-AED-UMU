@@ -15,11 +15,7 @@ int TablaHash::hash(string &palabra, int indice)
         h = (h * 256 + car) % B;
     }
 
-    int resultado = (h + i) % B;
-
-    assert(resultado >= 0 && resultado < B);
-
-    return resultado;
+    return (h + i) % B;
 }
 
 int TablaHash::buscar(string palabra)
@@ -48,6 +44,8 @@ TablaHash::~TablaHash()
     delete[] tabla;
 }
 
+// Parece no funcionar correctamente (Segmentation fault)
+// Solución temporal -> aumentar tamaño de la tabla
 void TablaHash::reestructurar(void)
 {
     {
