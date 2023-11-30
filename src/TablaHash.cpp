@@ -27,15 +27,11 @@ int TablaHash::buscar(string palabra)
     int i = 1;
     int h = hash(palabra, i);
 
-    assert (h >= 0 && h< B);
     while (i < B && !tabla[h].empty() && tabla[h] != palabra)
     {
-        h = hash(palabra, i);
         i++;
-        assert(h >= 0 && h < B);
+        h = hash(palabra, i);
     }
-
-    assert(h < B);
 
     return h;
 }
@@ -52,6 +48,25 @@ TablaHash::~TablaHash()
     delete[] tabla;
 }
 
+void TablaHash::reestructurar(void)
+{
+    {
+        int antiguoB = B;
+        B = B * 2;
+        string *tablaAux = new string[B];
+        for (int i = 0; i < antiguoB; i++)
+        {
+            if (!tabla[i].empty())
+            {
+                int h = buscar(tabla[i]);
+                tablaAux[h] = tabla[i];
+            }
+        }
+        delete[] tabla;
+        tabla = tablaAux;
+    }
+}
+
 void TablaHash::insertar(string palabra)
 {
     int h = buscar(palabra);
@@ -62,31 +77,14 @@ void TablaHash::insertar(string palabra)
         nElem++;
     }
 
-    // Restructuración de la tabla
     if (nElem > B / 2)
-    {
-        int antiguoB = B;
-        B = B * 2;
-        string *tablaAux = new string[B];
-        for (int i = 0; i < antiguoB; i++)
-        {
-            if (!tabla[i].empty())
-            {
-                int h = buscar(tabla[i]);
-                // ¿Tiene sentido la comprobación?
-                if (h != -1 && h < B)
-                    tablaAux[h] = tabla[i];
-            }
-        }
-        delete[] tabla;
-        tabla = tablaAux;
-    }
+        reestructurar();
 }
 
 void TablaHash::vaciar(void)
 {
     for (int i = 0; i < B; i++)
-        tabla[i].clear();
+        tabla[i] = "";
     nElem = 0;
 }
 
@@ -94,7 +92,7 @@ bool TablaHash::consultar(string palabra)
 {
     int h = buscar(palabra);
 
-    if (tabla[h] == palabra && h != -1)
+    if (tabla[h] == palabra && h < B)
         return true;
 
     return false;

@@ -1,7 +1,7 @@
 #ifndef TABLA_HASH_HPP
 #define TABLA_HASH_HPP
 
-#define TAM_TABLA_DEF 5000
+#define TAM_TABLA_DEF 1000000
 
 #include <iostream>
 
@@ -17,6 +17,7 @@ private:
 
     int buscar(string palabra);
     int hash(string &palabra, int indice);
+    void reestructurar(void);
 
 public:
     TablaHash(int elementos = TAM_TABLA_DEF);

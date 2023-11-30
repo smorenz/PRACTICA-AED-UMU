@@ -118,7 +118,9 @@ void INSERTAR()
                  << " palabras" << endl;
             return;
         }
+        cerr << "Voy a: " << normalizar(palabra) << ": "; cerr.flush();
         diccionario.insertar(normalizar(palabra));
+        cerr << "\"" << normalizar(palabra) << "\"" << endl; cerr.flush();
         contadorLocal++;
     }
 }
