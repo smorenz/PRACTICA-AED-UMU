@@ -7,28 +7,34 @@ using namespace std;
 
 class AVL {
 private:
+    // Atributos
     class Nodo {
     public:
         string clave;
         int altura;
-        Nodo *izq, *der;
+        AVL *izq, *der;
 
         Nodo(string clave);
         ~Nodo();
     };
     Nodo *raiz;
     int numElem;
+
+    // Funciones auxiliares
+    void RSD(AVL *objetivo);
+    void RSI(AVL *objetivo);
+    void RDD(AVL *objetivo) { RSI(objetivo->raiz->der); RSD(objetivo); };
+    void RDI(AVL *objetivo) { RSD(objetivo->raiz->izq); RSI(objetivo); };
+    int altura();
+
 public:
-    AVL();
+    AVL(Nodo *raiz);
     ~AVL();
     void insertar(string clave);
     int nElem() { return numElem; }
     bool consultar(string palabra);
     void vaciar();
-    void RSD(Nodo *objetivo);
-    void RSI(Nodo *objetivo);
-    void RDD(Nodo *objetivo) { RSI(objetivo->der); RSD(objetivo); };
-    void RDI(Nodo *objetivo) { RSD(objetivo->izq); RSI(objetivo); };
+
 };
 
 #endif // _AVL_HPP
