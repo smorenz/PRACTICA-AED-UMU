@@ -18,6 +18,7 @@ private:
 
         Nodo(string clave);
         ~Nodo();
+        int checkAltura(Nodo objetivo);
     };
     Nodo *raiz;
     int numElem;
@@ -35,7 +36,6 @@ private:
         RSD(objetivo->raiz->izq);
         RSI(objetivo);
     };
-    int altura();
 
 public:
     AVL(Nodo *raiz);

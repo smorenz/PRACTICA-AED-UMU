@@ -16,9 +16,11 @@ AVL::Nodo::~Nodo()
     delete der;
 }
 
+int AVL::Nodo::checkAltura(Nodo objetivo) 
+{ 
+}
 
 // Implementaciones para árboles
-
 
 AVL::AVL(Nodo *raiz)
 {
@@ -29,14 +31,6 @@ AVL::AVL(Nodo *raiz)
 AVL::~AVL()
 {
     delete raiz;
-}
-
-int AVL::altura()
-{
-    if (this == NULL)
-        return -1;
-    else
-        return raiz->altura;
 }
 
 void AVL::vaciar()
@@ -55,6 +49,19 @@ void AVL::insertar(string clave)
         raiz->der = NULL;
         raiz->altura = 0;
     }
+    else
+    {
+        if (clave < raiz->clave) { 
+            raiz->izq->insertar(clave);
+            if(true /* Cambiar */) {
+                if (clave < raiz->izq->raiz->clave) {
+                    RSI(this);
+                } else {
+                    RDI(this);
+                }
+            } else {
 
-    
+            }
+        }
+    }
 }
