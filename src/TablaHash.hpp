@@ -1,7 +1,7 @@
 #ifndef TABLA_HASH_HPP
 #define TABLA_HASH_HPP
 
-#define TAM_TABLA_DEF 1000000
+#define TAM_TABLA_DEF 200029 
 
 #include <iostream>
 

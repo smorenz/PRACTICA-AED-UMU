@@ -1,5 +1,7 @@
 #include "AVL.hpp"
 
+// Implementaciones para nodos
+
 AVL::Nodo::Nodo(string clave)
 {
     this->clave = clave;
@@ -13,6 +15,10 @@ AVL::Nodo::~Nodo()
     delete izq;
     delete der;
 }
+
+
+// Implementaciones para árboles
+
 
 AVL::AVL(Nodo *raiz)
 {
@@ -49,4 +55,6 @@ void AVL::insertar(string clave)
         raiz->der = NULL;
         raiz->altura = 0;
     }
+
+    
 }

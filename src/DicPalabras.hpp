@@ -2,6 +2,7 @@
 #define DIC_PALABRAS_HPP
 
 #include "TablaHash.hpp"
+#include "AVL.hpp"
 
 using namespace std;
 
@@ -9,6 +10,7 @@ class DicPalabras
 {
 private:
     TablaHash tabla;
+    AVL arbol;
 public:
     void vaciar();
     void insertar(string palabra);
