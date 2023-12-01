@@ -33,6 +33,7 @@ int AVL::nElem()
 {
     if (raiz == NULL)
         return 0;
+    
     return 1 + raiz->izq->nElem() + raiz->der->nElem();
 }
 
@@ -75,7 +76,7 @@ void AVL::RSI(AVL *objetivo)
     objetivo->raiz = B->raiz;
 }
 
-void AVL::reestructurar(AVL *objetivo, string clave)
+void AVL::equilibrar(AVL *objetivo, string clave)
 {
     if (clave < objetivo->raiz->clave) // Inserción en el subárbol izquierdo
     {
@@ -118,7 +119,7 @@ void AVL::insertar(string clave)
     else if (clave == raiz->clave)
         return;
     else
-        reestructurar(this, clave);
+        equilibrar(this, clave);
 }
 
 bool AVL::consultar(string clave)

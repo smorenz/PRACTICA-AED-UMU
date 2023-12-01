@@ -23,7 +23,7 @@ private:
 
     // Funciones auxiliares
     int altura(AVL *objetivo);
-    void reestructurar(AVL *objetivo, string clave);
+    void equilibrar(AVL *objetivo, string clave);
     void RSD(AVL *objetivo);
     void RSI(AVL *objetivo);
     void RDD(AVL *objetivo)
