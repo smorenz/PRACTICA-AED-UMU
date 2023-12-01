@@ -13,17 +13,17 @@ private:
     {
     public:
         string clave;
-        int altura;
+        int alt;
         AVL *izq, *der;
 
         Nodo(string clave);
         ~Nodo();
-        int checkAltura(Nodo objetivo);
     };
     Nodo *raiz;
-    int numElem;
 
     // Funciones auxiliares
+    int altura(AVL *objetivo);
+    void reestructurar(AVL *objetivo, string clave);
     void RSD(AVL *objetivo);
     void RSI(AVL *objetivo);
     void RDD(AVL *objetivo)
@@ -38,10 +38,11 @@ private:
     };
 
 public:
-    AVL(Nodo *raiz);
+    // Constructor por defecto -> árbol vacío
+    AVL(Nodo *raiz = NULL);
     ~AVL();
+    int nElem();
     void insertar(string clave);
-    int nElem() { return numElem; }
     bool consultar(string palabra);
     void vaciar();
 };
