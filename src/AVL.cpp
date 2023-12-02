@@ -14,8 +14,10 @@ AVL::Nodo::Nodo(string clave)
 
 AVL::Nodo::~Nodo()
 {
-    delete izq;
-    delete der;
+    if (izq != NULL)
+        delete izq;
+    if (der != NULL)
+        delete der;
 }
 
 // Implementaciones para árboles
@@ -28,7 +30,8 @@ AVL::AVL()
 
 AVL::~AVL()
 {
-    delete raiz;
+    if (raiz != NULL)
+        delete raiz;
 }
 
 int AVL::altura(Nodo *objetivo)
@@ -40,9 +43,13 @@ int AVL::altura(Nodo *objetivo)
 
 void AVL::vaciar()
 {
-    delete this->raiz->der;
-    delete this->raiz->izq;
+    if (raiz->der != NULL)
+        delete this->raiz->der;
+    if(raiz->izq != NULL)
+        delete this->raiz->izq;
+    
     delete this->raiz;
+
     numElem = 0;
 }
 
