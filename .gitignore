@@ -8,3 +8,5 @@
 ./obj/*
 ./obj/DicPalabras.o
 ./obj
+./vscode/.settings.json
+.vscode

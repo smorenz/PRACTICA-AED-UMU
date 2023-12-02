@@ -24,3 +24,8 @@ int DicPalabras::numElem()
 {
     return arbol.nElem();
 }
+
+string DicPalabras::alarga(string prefijo)
+{
+    return arbol.alargaPalabras(prefijo);
+}

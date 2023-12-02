@@ -3,8 +3,8 @@ SRC := src
 OBJ := obj
 CPPFLAGS := -std=c++17 -Wall -Wno-deprecated -O2
 OBJS := $(addprefix ./obj/, AVL.o DicPalabras.o main.o Comandos.o TablaHash.o)
-TESTFILE := $(addprefix ./obj/tests/, 200a.in)
-DIFFILE := $(addprefix ./obj/tests/, 200a.out)
+TESTFILE := $(addprefix ./obj/tests/, 207a.in)
+DIFFILE := $(addprefix ./obj/tests/, 207a.out)
 
 all : ./a.out
 

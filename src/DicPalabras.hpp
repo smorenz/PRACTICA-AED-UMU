@@ -16,6 +16,7 @@ public:
     void insertar(string palabra);
     bool consultar(string palabra);
     int numElem();
+    string alarga(string prefijo);
 };
 
 #endif // DIC_PALABRAS

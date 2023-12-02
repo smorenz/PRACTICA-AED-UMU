@@ -123,3 +123,51 @@ bool AVL::consultarAux(Nodo *A, string clave)
     }
     return false;
 }
+
+int AVL::getTamPalabra(string palabra) {
+    int tam = 0;
+    for (int i = 0; i < palabra.size(); i++) {
+        if (palabra[i] != ' ')
+            tam += (int) palabra[i];
+        else if (palabra[i] == (char)0xC3)
+        {
+            switch (palabra[i+1])
+            {
+            case (char)0x91: // Ñ
+                tam += 165;
+                ++i;
+                break;
+            case (char)0x9C: // Ü
+                tam += 154;
+                ++i;
+                break;
+            }
+        }
+    }
+    return tam;
+}
+
+string AVL::alargaPalabrasAux(Nodo* nodo, string prefijo) {
+    if (nodo == NULL)
+        return "";
+
+    string palabraIzq = alargaPalabrasAux(nodo->izq, prefijo);
+    string palabraDer = alargaPalabrasAux(nodo->der, prefijo);
+    string palabraActual = "";
+
+    // substr sirve para obtener de un conjunto de caracteres (string en c++) un subconjunto de este
+    // el cual va de una posición inicial (en este caso la posición 0, el inicio de la palabra) hasta
+    // una posición final indicada en la cantidad de caracteres que se quieren obtener (en este caso
+    // la longitud del prefijo) -> EJ: "hola".substr(0, 2) -> "ho"
+    if (nodo->clave.substr(0, prefijo.size()) == prefijo)
+        palabraActual = nodo->clave;
+
+    if (palabraActual.size() > palabraIzq.size() && palabraActual.size() > palabraDer.size())
+        return palabraActual;
+    else if (palabraIzq.size() > palabraActual.size() && palabraIzq.size() > palabraDer.size())
+        return palabraIzq;
+    else if (palabraDer.size() > palabraActual.size() && palabraDer.size() > palabraIzq.size())
+        return palabraDer;
+    else
+            return palabraActual;
+}

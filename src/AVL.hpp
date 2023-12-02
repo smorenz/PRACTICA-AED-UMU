@@ -25,6 +25,8 @@ private:
     // Funciones auxiliares
 
     // Altura de un árbol
+    int getTamPalabra(string palabra);
+    string alargaPalabrasAux(Nodo *raiz, string prefijo);
     void insertarAux(Nodo *&raiz, string clave);
     bool consultarAux(Nodo * raiz, string clave);
     int altura(Nodo *objetivo);
@@ -48,7 +50,8 @@ public:
     bool consultar(string palabra) { return this->consultarAux(this->raiz, palabra); }
     void vaciar();
     void insertar(string palabra) { this->insertarAux(this->raiz, palabra); }
-    int nElem() { return this->numElem; } 
+    int nElem() { return this->numElem; }
+    string alargaPalabras(string prefijo) { return alargaPalabrasAux(this->raiz, prefijo); }
 };
 
 #endif // _AVL_HPP

@@ -217,8 +217,7 @@ void ALARGA()
     string palabra;
     cin >> palabra;
     palabra = normalizar(palabra);
-    cout << "Alarga: " << palabra << endl;
-    cout << "No implementado" << endl;
+    cout << "Alarga: " << palabra << " -> " << diccionario.alarga(palabra) << endl;
 }
 
 void interprete(string &comando)
