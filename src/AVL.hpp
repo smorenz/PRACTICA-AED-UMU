@@ -14,37 +14,43 @@ private:
     public:
         string clave;
         int alt;
-        AVL *izq, *der;
+        Nodo *izq, *der;
 
         Nodo(string clave);
         ~Nodo();
     };
     Nodo *raiz;
+    int numElem;
 
     // Funciones auxiliares
-    int altura(AVL *objetivo);
+
+    // Altura de un árbol
+    void insertarAux(Nodo *&raiz, string clave);
+    bool consultarAux(Nodo * raiz, string clave);
+    int altura(Nodo *objetivo);
     void equilibrar(AVL *objetivo, string clave);
-    void RSD(AVL *objetivo);
-    void RSI(AVL *objetivo);
-    void RDD(AVL *objetivo)
+    void RSD(Nodo *&objetivo);
+    void RSI(Nodo *&objetivo);
+    void RDD(Nodo *&A)
     {
-        RSI(objetivo->raiz->der);
-        RSD(objetivo);
+        RSI(A->der);
+        RSD(A);
     };
-    void RDI(AVL *objetivo)
+    void RDI(Nodo *&A)
     {
-        RSD(objetivo->raiz->izq);
-        RSI(objetivo);
+        RSD(A->izq);
+        RSI(A);
     };
 
 public:
     // Constructor por defecto -> árbol vacío
-    AVL(Nodo *raiz = NULL);
+    AVL();
     ~AVL();
-    int nElem();
-    void insertar(string clave);
-    bool consultar(string palabra);
+    int nElem(Nodo *raiz);
+    bool consultar(string palabra) { return this->consultarAux(this->raiz, palabra); }
     void vaciar();
+    void insertar(string palabra) { this->insertarAux(this->raiz, palabra); }
+    int nElem() { return this->numElem; } 
 };
 
 #endif // _AVL_HPP

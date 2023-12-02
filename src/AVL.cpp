@@ -19,9 +19,10 @@ AVL::Nodo::~Nodo()
 
 // Implementaciones para árboles
 
-AVL::AVL(Nodo *raiz)
+AVL::AVL()
 {
-    this->raiz = raiz;
+    raiz = NULL;
+    numElem = 0;
 }
 
 AVL::~AVL()
@@ -29,109 +30,92 @@ AVL::~AVL()
     delete raiz;
 }
 
-int AVL::nElem()
+int AVL::altura(Nodo *objetivo)
 {
-    if (raiz == NULL)
-        return 0;
-    
-    return 1 + raiz->izq->nElem() + raiz->der->nElem();
-}
-
-int AVL::altura(AVL *objetivo)
-{
-    if (objetivo == NULL || objetivo->raiz == NULL)
+    if (objetivo == NULL)
         return -1;
-    return objetivo->raiz->alt;
+    return objetivo->alt;
 }
 
 void AVL::vaciar()
 {
-    delete raiz->izq;
-    delete raiz->der;
-
-    // Reinicialización de la raíz de manera explícita (Por si acaso)
-    raiz->clave = "";
-    raiz->izq = NULL;
-    raiz->der = NULL;
-    raiz->alt = 0;
+    delete this->raiz->der;
+    delete this->raiz->izq;
+    delete this->raiz;
+    numElem = 0;
 }
 
-void AVL::RSD(AVL *objetivo)
+void AVL::RSD(Nodo *&A)
 {
-    AVL *B = objetivo->raiz->der;
-    objetivo->raiz->der = B->raiz->izq;
-    B->raiz->izq->raiz = objetivo->raiz;
-    objetivo->raiz->alt = 1 + max(altura(objetivo->raiz->izq), altura(objetivo->raiz->der));
-    B->raiz->alt = 1 + max(objetivo->raiz->alt, altura(B->raiz->der));
-    objetivo->raiz = B->raiz;
+    Nodo *B = A->der;
+    A->der = B->izq;
+    B->izq = A;
+    A->alt = 1 + max(altura(A->izq), altura(A->der));
+    B->alt = 1 + max(altura(A), altura(B->der));
+    A = B;
 }
 
-void AVL::RSI(AVL *objetivo)
+void AVL::RSI(Nodo *&A)
 {
-    AVL *B = objetivo->raiz->izq;
-    objetivo->raiz->izq = B->raiz->der;
-    B->raiz->der->raiz = objetivo->raiz;
-    objetivo->raiz->alt = 1 + max(altura(objetivo->raiz->izq), altura(objetivo->raiz->der));
-    B->raiz->alt = 1 + max(objetivo->raiz->alt, altura(B->raiz->izq));
-    objetivo->raiz = B->raiz;
+    Nodo *B = A->izq;
+    A->izq = B->der;
+    B->der = A;
+    A->alt = 1 + max(altura(A->izq), altura(A->der));
+    B->alt = 1 + max(altura(A), altura(B->izq));
+    A = B;
 }
 
-void AVL::equilibrar(AVL *objetivo, string clave)
+void AVL::insertarAux(Nodo *&A, string clave)
 {
-    if (clave < objetivo->raiz->clave) // Inserción en el subárbol izquierdo
+    if (A == NULL)
     {
-        objetivo->raiz->izq->insertar(clave);
-        if (altura(objetivo->raiz->izq) - altura(objetivo->raiz->der) > 1)
-        {
-            if (clave < objetivo->raiz->izq->raiz->clave)
-                RSI(this);
-            else
-                RDI(this);
-        }
-        else
-            objetivo->raiz->alt = 1 + max(altura(objetivo->raiz->izq), altura(objetivo->raiz->der));
+        A = new Nodo(clave);
+        numElem++;
     }
-    else if (clave > objetivo->raiz->clave) // Inserción en el subárbol derecho (simetrico al anterior)
-    {
-        objetivo->raiz->der->insertar(clave);
-        if (altura(objetivo->raiz->der) - altura(objetivo->raiz->izq) > 1)
-        {
-            if (clave > objetivo->raiz->der->raiz->clave)
-                RSD(this);
-            else
-                RDD(this);
-        }
-        else
-            objetivo->raiz->alt = 1 + max(altura(objetivo->raiz->izq), altura(objetivo->raiz->der));
-    }
-}
-
-void AVL::insertar(string clave)
-{
-    // Caso árbol vacío -> fin recursividad
-    if (raiz == NULL)
-    {
-        raiz = new Nodo(clave);
-        raiz->izq = NULL;
-        raiz->der = NULL;
-        raiz->alt = 0;
-    }
-    else if (clave == raiz->clave)
-        return;
     else
-        equilibrar(this, clave);
+    {
+        if (clave < A->clave) // Inserción en subárbol izquierdo
+        {
+            insertarAux(A->izq, clave);
+            if (altura(A->izq) - altura(A->der) > 1)
+            {
+                if (clave < A->izq->clave)
+                    RSI(A);
+                else
+                    RDI(A);
+            }
+            A->alt = 1 + max(altura(A->izq), altura(A->der));
+        }
+        else if (clave > A->clave) // Inserción en subárbol derecho (simétrico a caso anterior)
+        {
+            insertarAux(A->der, clave);
+            if (altura(A->der) - altura(A->izq) > 1)
+            {
+                if (clave > A->der->clave)
+                    RSD(A);
+                else
+                    RDD(A);
+            }
+            A->alt = 1 + max(altura(A->izq), altura(A->der));
+        }
+    }
 }
 
-bool AVL::consultar(string clave)
+bool AVL::consultarAux(Nodo *A, string clave)
 {
-    if (raiz != NULL) // Caso árbol vacío
+    if (A != NULL)
     {
-        if (clave == raiz->clave)
+        if (A->clave == clave)
             return true;
-        if (clave < raiz->clave)
-            return raiz->izq->consultar(clave);
-        if (clave > raiz->clave)
-            return raiz->der->consultar(clave);
+        else if (clave < A->clave)
+            return consultarAux(A->izq, clave);
+        else if (clave > A->clave)
+            return consultarAux(A->der, clave);
+        else
+        {
+            return false;
+            cerr << "Error en la búsqueda" << endl;
+        }
     }
     return false;
 }
