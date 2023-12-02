@@ -5,11 +5,13 @@ using namespace std;
 
 void DicPalabras::vaciar()
 {
+    tabla.vaciar();
     arbol.vaciar();
 }
 
 void DicPalabras::insertar(string palabra)
 {
+    tabla.insertar(palabra);
     arbol.insertar(palabra);
 }
 
