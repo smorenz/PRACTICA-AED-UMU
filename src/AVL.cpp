@@ -1,6 +1,5 @@
 #include "AVL.hpp"
 #include <cmath>
-#include <algorithm>
 
 // Implementaciones para nodos
 
@@ -14,10 +13,7 @@ AVL::Nodo::Nodo(string clave)
 
 AVL::Nodo::~Nodo()
 {
-    if (izq != NULL)
-        delete izq;
-    if (der != NULL)
-        delete der;
+    // Gestionado por destructor de AVL (Se presupone que los Nodos son solo elementos de un AVL, no se usan por separado)
 }
 
 // Implementaciones para árboles
@@ -30,8 +26,7 @@ AVL::AVL()
 
 AVL::~AVL()
 {
-    if (raiz != NULL)
-        delete raiz;
+    vaciar();
 }
 
 int AVL::altura(Nodo *objetivo)
@@ -43,12 +38,16 @@ int AVL::altura(Nodo *objetivo)
 
 void AVL::vaciar()
 {
-    if (raiz->der != NULL)
-        delete this->raiz->der;
-    if(raiz->izq != NULL)
-        delete this->raiz->izq;
-    
-    delete this->raiz;
+    if (raiz != NULL)
+    {
+        if (raiz->der != NULL)
+            delete this->raiz->der;
+        if (raiz->izq != NULL)
+            delete this->raiz->izq;
+
+        delete this->raiz;
+        raiz = NULL;
+    }
 
     numElem = 0;
 }
