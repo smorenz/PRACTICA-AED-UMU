@@ -166,8 +166,6 @@ string AVL::alargaPalabrasAux(Nodo* nodo, string prefijo) {
         return palabraActual;
     else if (palabraIzq.size() > palabraActual.size() && palabraIzq.size() > palabraDer.size())
         return palabraIzq;
-    else if (palabraDer.size() > palabraActual.size() && palabraDer.size() > palabraIzq.size())
-        return palabraDer;
     else
-        return palabraActual;
+        return palabraDer;
 }
