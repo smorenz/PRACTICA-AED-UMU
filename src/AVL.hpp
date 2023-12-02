@@ -46,7 +46,6 @@ public:
     // Constructor por defecto -> árbol vacío
     AVL();
     ~AVL();
-    int nElem(Nodo *raiz);
     bool consultar(string palabra) { return this->consultarAux(this->raiz, palabra); }
     void vaciar();
     void insertar(string palabra) { this->insertarAux(this->raiz, palabra); }
