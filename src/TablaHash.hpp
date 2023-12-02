@@ -12,7 +12,7 @@ class TablaHash
 private:
     //
     int B;     // tamaño de la lista
-    int nElem; // Elementos en lista
+    int numElem; // Elementos en lista
     string *tabla;
 
     int buscar(string palabra);
@@ -25,7 +25,7 @@ public:
     void insertar(string palabra);
     void vaciar(void);
     bool consultar(string palabra);
-    int numElem(void) { return nElem; }
+    int nElem(void) { return numElem; }
 };
 
 #endif // TABLA_HASH

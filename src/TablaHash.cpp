@@ -34,7 +34,7 @@ int TablaHash::buscar(string palabra)
 TablaHash::TablaHash(int entradas)
 {
     B = entradas;
-    nElem = 0;
+    numElem = 0;
     tabla = new string[B];
 }
 
@@ -71,10 +71,10 @@ void TablaHash::insertar(string palabra)
     if (tabla[h].empty())
     {
         tabla[h] = palabra;
-        nElem++;
+        numElem++;
     }
 
-    if (nElem > B / 2)
+    if (numElem > B / 2)
         reestructurar();
 }
 
@@ -82,7 +82,7 @@ void TablaHash::vaciar(void)
 {
     for (int i = 0; i < B; i++)
         tabla[i] = "";
-    nElem = 0;
+    numElem = 0;
 }
 
 bool TablaHash::consultar(string palabra)
