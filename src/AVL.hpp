@@ -28,7 +28,6 @@ private:
     void insertarAux(Nodo *&raiz, string clave);
     bool consultarAux(Nodo * raiz, string clave);
     int altura(Nodo *objetivo);
-    void equilibrar(AVL *objetivo, string clave);
     void RSD(Nodo *&objetivo);
     void RSI(Nodo *&objetivo);
     void RDD(Nodo *&A)
