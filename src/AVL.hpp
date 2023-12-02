@@ -30,7 +30,8 @@ private:
     int altura(Nodo *objetivo);
     void RSD(Nodo *&objetivo);
     void RSI(Nodo *&objetivo);
-    void RDD(Nodo *&A)
+    void RDD(Nodo *&A);
+    void encontrarPalabraLarga(Nodo * A, string prefijo, string &palabraLarga);
     {
         RSI(A->der);
         RSD(A);
@@ -48,7 +49,8 @@ public:
     bool consultar(string palabra) { return this->consultarAux(this->raiz, palabra); }
     void vaciar();
     void insertar(string palabra) { this->insertarAux(this->raiz, palabra); }
-    int nElem() { return this->numElem; } 
+    int nElem() { return this->numElem; }
+    string alargaPalabras(string prefijo);
 };
 
 #endif // _AVL_HPP

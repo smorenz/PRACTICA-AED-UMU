@@ -1,5 +1,6 @@
 #include "AVL.hpp"
 #include <cmath>
+#include <algorithm>
 
 // Implementaciones para nodos
 
@@ -79,7 +80,7 @@ void AVL::insertarAux(Nodo *&A, string clave)
             insertarAux(A->izq, clave);
             if (altura(A->izq) - altura(A->der) > 1)
             {
-                if (clave < A->izq->clave)
+                if (A->izq != NULL && clave < A->izq->clave)
                     RSI(A);
                 else
                     RDI(A);
@@ -91,7 +92,7 @@ void AVL::insertarAux(Nodo *&A, string clave)
             insertarAux(A->der, clave);
             if (altura(A->der) - altura(A->izq) > 1)
             {
-                if (clave > A->der->clave)
+                if (A->der != NULL && clave > A->der->clave)
                     RSD(A);
                 else
                     RDD(A);
@@ -112,10 +113,7 @@ bool AVL::consultarAux(Nodo *A, string clave)
         else if (clave > A->clave)
             return consultarAux(A->der, clave);
         else
-        {
             return false;
-            cerr << "Error en la búsqueda" << endl;
-        }
     }
     return false;
 }
